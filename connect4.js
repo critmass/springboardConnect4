@@ -33,8 +33,11 @@ class Board{
   
   /** makeHtmlBoard: make HTML table and row of column tops. */
   __makeHtmlBoard() {
-    const board = document.getElementById('board');
-    board.innerHTML = ""
+    const boardSpot = document.getElementById("board-spot")
+    boardSpot.innerHTML = ""
+    const board = document.createElement("table")
+    boardSpot.appendChild(board)
+    board.id = "board"
   
     // make main part of board
     for (let x = 0; x < this.width; x++) {
@@ -144,9 +147,6 @@ class Connect4Board extends Board {
     let horiz = 1
 
     const player = this.__innerBoard[x][y]
-    const board = this.__innerBoard
-    const h = this.height
-    const w = this.width
     const v = this.victoryCondition
 
     // the following 7 for loops increment each direction until there is a break in the 
@@ -257,6 +257,7 @@ let game = undefined
 
 document.querySelector('[name="start-btn"]').addEventListener("click", e =>{
   e.preventDefault()
+  
   game = new Game( HEIGHT, WIDTH )
 })
 
