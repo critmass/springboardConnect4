@@ -1,0 +1,68 @@
+/* game board table */
+
+body{
+  background-color: powderblue;
+}
+
+form{
+  transform: translateX(25vw);
+  align-content: center;
+  font-size: large;
+}
+
+#board {
+  transform: rotate(-90deg) translateY(35vw);
+}
+
+#board td {
+  width: 50px;
+  height: 50px;
+  border: solid 1px #777;
+}
+
+/* pieces are div within game table cells: draw as colored circles */
+
+.piece {
+  
+  margin: 5px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  opacity: 100%;
+  position: absolute;
+  animation-name: drop;
+  animation-fill-mode: both;
+  animation-duration: calc( 50ms * (var(--row) ));
+  animation-direction: reverse;
+  animation-timing-function: ease-out;
+  
+}
+
+
+.piece.p1 {
+  background-image:radial-gradient(circle at center, red 15%,black 150%);
+}
+
+.piece.p2 {
+  
+  background-image:radial-gradient(circle at center, blue 15%,black 150%);
+}
+
+#board tr{
+  transition: background-color 500ms;
+}
+
+#board tr:hover{
+  background-color: gold;
+}
+
+@keyframes drop{
+  from{
+    
+    transform: translateY( -27px);
+  }
+  to{
+    opacity: 0%;
+    transform:  translate( calc( (var(--row)) * 56px  ) , -27px);
+  }
+}
